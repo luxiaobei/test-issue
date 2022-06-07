@@ -8,6 +8,7 @@ body:
     attributes:
       label: Bug Description
       description: Provide a brief description about bug.
+      value: 'value'
     validations:
       required: true
   - type: input
@@ -15,6 +16,7 @@ body:
     attributes:
       label: Version
       description: What version of our software are you running?
+      value: 'value'
     validations:
       required: true
  - type: input
@@ -22,6 +24,7 @@ body:
     attributes:
       label: Url?
       description: url
+      value: 'value'
     validations:
       required: false
   - type: dropdown
