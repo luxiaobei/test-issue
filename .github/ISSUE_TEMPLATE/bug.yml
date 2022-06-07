@@ -19,7 +19,7 @@ body:
       value: 'value'
     validations:
       required: true
- - type: input
+  - type: input
     id: url
     attributes:
       label: Url?
@@ -30,6 +30,6 @@ body:
   - type: dropdown
     id: browsers
     attributes:
-        - Chrome
-        - Safari
-        - Microsoft Edge
+      - Chrome
+      - Safari
+      - Microsoft Edge
