@@ -1,6 +1,6 @@
 name: Bug Report
 description: File a bug report
-title: "bug(COMPONENT): TITLE" "
+title: "bug(COMPONENT): TITLE"
 labels: ["bug"]
 body:
   - type: markdown
