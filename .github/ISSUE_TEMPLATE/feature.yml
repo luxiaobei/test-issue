@@ -11,7 +11,7 @@ body:
       value: 'value'
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: case
     attributes:
       label: Use Case
