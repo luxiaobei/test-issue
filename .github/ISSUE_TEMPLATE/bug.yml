@@ -3,7 +3,7 @@ description: File a bug report
 title: "bug(COMPONENT): TITLE"
 labels: ["bug"]
 body:
-  - type: markdown
+  - type: textarea
     id: description
     attributes:
       label: Bug Description
