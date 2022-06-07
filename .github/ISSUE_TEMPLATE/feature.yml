@@ -8,6 +8,7 @@ body:
       label: Feature Description
       id: description
       description: Provide a brief summary of the feature you would like to see.
+      value: value
     validations:
       required: true
   - type: markdown
@@ -15,5 +16,6 @@ body:
       label: Use Case
       id: case
       description: Describe the use case(s) that the proposed feature would enable.
+      value: value
     validations:
       required: true
