@@ -27,7 +27,6 @@ body:
   - type: dropdown
     id: browsers
     attributes:
-	@@ -42,17 +34,3 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
