@@ -15,7 +15,7 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of our software are you running?
+      description: Provide version of software.
       value: 'value'
     validations:
       required: true
@@ -23,13 +23,14 @@ body:
     id: url
     attributes:
       label: Url?
-      description: url
+      description: provide a link to a minimal reproduction of the bug.
       value: 'value'
     validations:
       required: false
   - type: dropdown
     id: browsers
     attributes:
+      label: provide browser to a minimal reproduction of the bug?
       options:
         - Chrome
         - Safari
