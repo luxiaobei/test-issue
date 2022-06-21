@@ -13,6 +13,6 @@ body:
   - type: textarea
     attributes:
       label: Use Case
-      description: Describe the use case(s) that the proposed feature would enable.
+      placeholder: Describe the use case(s) that the proposed feature would enable.
     validations:
       required: true
