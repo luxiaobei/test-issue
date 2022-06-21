@@ -8,7 +8,6 @@ body:
     attributes:
       label: Bug Description
       placeholder: Provide a brief description about bug.
-      value: ''
     validations:
       required: true
   - type: input
@@ -16,7 +15,6 @@ body:
     attributes:
       label: Version
       placeholder: Provide version of software.
-      value: ''
     validations:
       required: true
   - type: input
@@ -24,14 +22,13 @@ body:
     attributes:
       label: Url?
       placeholder: provide a link to a minimal reproduction of the bug.
-      value: ''
     validations:
       required: false
   - type: dropdown
     id: browsers
     attributes:
       label: Browsers
-      placeholder: provide browser to a minimal reproduction of the bug?
+      description: provide browser to a minimal reproduction of the bug?
       options:
         - Chrome
         - Safari
