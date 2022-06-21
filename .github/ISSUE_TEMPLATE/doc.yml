@@ -1,0 +1,13 @@
+
+name: Documentation
+description: Documentation
+title: 'docs(COMPONENT): TITLE'
+labels: ['docs']
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      placeholder: Provide a brief summary of what you would like to see changed in our documentation.
+    validations:
+      required: true
+ 
