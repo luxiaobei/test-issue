@@ -8,29 +8,30 @@ body:
     attributes:
       label: Bug Description
       placeholder: Provide a brief description about bug.
-      value: 'value'
+      value: ''
     validations:
       required: true
   - type: input
     id: version
     attributes:
       label: Version
-      description: Provide version of software.
-      value: 'value'
+      placeholder: Provide version of software.
+      value: ''
     validations:
       required: true
   - type: input
     id: url
     attributes:
       label: Url?
-      description: provide a link to a minimal reproduction of the bug.
-      value: 'value'
+      placeholder: provide a link to a minimal reproduction of the bug.
+      value: ''
     validations:
       required: false
   - type: dropdown
     id: browsers
     attributes:
-      label: provide browser to a minimal reproduction of the bug?
+      label: Browsers
+      placeholder: provide browser to a minimal reproduction of the bug?
       options:
         - Chrome
         - Safari
