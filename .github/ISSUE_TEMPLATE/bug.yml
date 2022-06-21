@@ -7,7 +7,7 @@ body:
     id: description
     attributes:
       label: Bug Description
-      description: Provide a brief description about bug.
+      placeholder: Provide a brief description about bug.
       value: 'value'
     validations:
       required: true
