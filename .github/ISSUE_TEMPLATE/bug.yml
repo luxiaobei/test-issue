@@ -30,6 +30,9 @@ body:
   - type: dropdown
     id: browsers
     attributes:
-      - Chrome
-      - Safari
-      - Microsoft Edge
+      options:
+        - Chrome
+        - Safari
+        - Microsoft Edge
+   validations:
+     required: true
