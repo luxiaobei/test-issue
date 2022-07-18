@@ -15,13 +15,11 @@ body:
     attributes:
       label: Component
       options:
-        - deps
         - cdk
         - schematics
         - variables
         - core
         - action
-        - testing
         - shared
         - types
         - util
@@ -63,7 +61,6 @@ body:
         - menu
         - nav
         - notify
-        - nav
         - pagination
         - popover
         - progress
@@ -103,7 +100,7 @@ body:
         - segment
         - dot
     validations:
-      required: false
+      required: true
   - type: input
     id: version
     attributes:
