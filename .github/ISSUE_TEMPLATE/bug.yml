@@ -92,6 +92,7 @@ body:
         - image
         - segment
         - dot
+        - other
     validations:
       required: true
   - type: input

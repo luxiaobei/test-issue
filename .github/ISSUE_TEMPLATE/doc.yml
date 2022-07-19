@@ -9,17 +9,10 @@ body:
     attributes:
       label: Component
       options:
-        - deps
-        - cdk
         - schematics
         - variables
-        - core
         - action
-        - testing
         - shared
-        - types
-        - util
-        - styles
         - action-menu
         - alert
         - arrow-switcher
@@ -95,6 +88,7 @@ body:
         - image
         - segment
         - dot
+        - other
     validations:
       required: true
   - type: textarea
