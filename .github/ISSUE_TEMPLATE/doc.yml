@@ -1,7 +1,7 @@
 
 name: Documentation
 description: Documentation
-title: 'docs(COMPONENT): TITLE'
+title: 'TITLE'
 labels: ['docs']
 body:
   - type: dropdown
@@ -96,7 +96,7 @@ body:
         - segment
         - dot
     validations:
-      required: false
+      required: true
   - type: textarea
     attributes:
       label: Description

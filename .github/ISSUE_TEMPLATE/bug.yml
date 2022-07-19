@@ -1,15 +1,8 @@
 name: Bug Report
 description: File a bug report
-title: 'bug(COMPONENT): TITLE'
+title: 'TITLE'
 labels: ['bug']
 body:
-  - type: input
-    id: title
-    attributes:
-      label: Title
-      placeholder: Title of component.
-    validations:
-      required: true
   - type: dropdown
     id: name
     attributes:
