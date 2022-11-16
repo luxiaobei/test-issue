@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/luxiaobei/test-issue/compare/v1.1.0...v1.1.1) (2022-11-16)
+
+
+### Bug Fixes
+
+* remove ([839c794](https://github.com/luxiaobei/test-issue/commit/839c7944d6104adc26c9fd9b0b04764baa90c0b3))
+
 ## [1.1.0](https://github.com/luxiaobei/test-issue/compare/v1.0.0...v1.1.0) (2022-11-16)
 
 
