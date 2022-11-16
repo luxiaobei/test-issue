@@ -6,7 +6,10 @@
    
   },
   "release": {
-    "branches": ["main"]
+    "branches": ["main"],
+    "publish": [{
+      "path": "@luxiaobei1/test-issue"
+    }]
   },
   "repository": {
     "type": "git",
