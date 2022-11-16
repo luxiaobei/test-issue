@@ -20,9 +20,9 @@
     "Angular 2+"
   ],
   "dependencies": {
-   
+    
   },
   "devDependencies": {
-    "typescript": "~4.7.0"
+    
   }
 }
