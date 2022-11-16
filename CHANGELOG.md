@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/luxiaobei/test-issue/compare/v1.0.0...v1.1.0) (2022-11-16)
+
+
+### Features
+
+* add npm token ([564a3d2](https://github.com/luxiaobei/test-issue/commit/564a3d209f431a1a0b8849cf6d4fa65d2541763b))
+
 ## 1.0.0 (2022-11-16)
 
 
