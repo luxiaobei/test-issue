@@ -5,6 +5,9 @@
   "scripts": {
    
   },
+  "release": {
+    "branches": ["main"]
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/luxiaobei/test-issue.git"
