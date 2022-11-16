@@ -6,7 +6,9 @@
     "pub": "npm publish --access=public"
   },
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ]
   },
   "repository": {
     "type": "git",
@@ -17,10 +19,6 @@
     "Angular",
     "Angular 2+"
   ],
-  "dependencies": {
-    
-  },
-  "devDependencies": {
-    
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
