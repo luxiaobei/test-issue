@@ -1,0 +1,28 @@
+{
+  "name": "test-issue",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": "^14.15.0 || >=16.10.0",
+    "npm": "^7",
+    "yarn": "Please use npm instead of yarn to install dependencies"
+  },
+  "scripts": {
+   
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/luxiaobei/test-issue.git"
+  },
+  "description": "Angular UI Components",
+  "keywords": [
+    "Angular",
+    "Angular 2+"
+  ],
+  "dependencies": {
+   
+  },
+  "devDependencies": {
+    "typescript": "~4.7.0"
+  }
+}
