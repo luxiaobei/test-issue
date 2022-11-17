@@ -4,14 +4,14 @@ on:
   pull_request:
     types:
       - opened
-    branches:
-      - 'main'
   pull_request_review:
     types:
       - submitted
   status: {}
 
 jobs:
+  run_if:
+    if:  startsWith(github.head_ref, 'releases-')
   # 合并发布版本的 pr 到 master
   auto-merge:
     runs-on: ubuntu-latest
