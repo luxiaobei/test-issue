@@ -1,26 +1,26 @@
-name: AutoMerge
+# name: AutoMerge
 
-on:
-  pull_request:
-    types:
-     - opened
-  pull_request_review:
-    types:
-      - submitted
-  status: {}
+# on:
+#   pull_request:
+#     types:
+#      - opened
+#   pull_request_review:
+#     types:
+#       - submitted
+#   status: {}
 
-jobs:
-  console_log:
-    runs-on: ubuntu-latest
-    steps:
-       - run: echo '${{toJSON(github)}}'
-  run_if:
-    if:  startsWith(github.head_ref, 'release-')
-  # 合并发布版本的 pr 到 master
-    runs-on: ubuntu-latest
-    steps:
-      - name: Automerge
-        uses: 'pascalgn/automerge-action@v0.14.3'
-        env:
-          GITHUB_TOKEN: '${{ secrets.RELEASE_TOKEN }}'
-          MERGE_LABELS: ''
+# jobs:
+#   console_log:
+#     runs-on: ubuntu-latest
+#     steps:
+#        - run: echo '${{toJSON(github)}}'
+#   run_if:
+#     if:  startsWith(github.head_ref, 'release-')
+#   # 合并发布版本的 pr 到 master
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Automerge
+#         uses: 'pascalgn/automerge-action@v0.14.3'
+#         env:
+#           GITHUB_TOKEN: '${{ secrets.RELEASE_TOKEN }}'
+#           MERGE_LABELS: ''

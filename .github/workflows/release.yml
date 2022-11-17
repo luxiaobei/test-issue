@@ -1,13 +1,24 @@
-name: Release
+name: mergeAndRelease
 on:
-  push: 
-    branches:
-      - main
+  pull_request:
+    types:
+     - opened
+  pull_request_review:
+    types:
+      - submitted
+  status: {}
 jobs:
-  release:
-    name: Release
+  mergeAndRelease:
+    name: mergeAndRelease
     runs-on: ubuntu-18.04
     steps: 
+      if:  startsWith(github.head_ref, 'release-')
+      runs-on: ubuntu-latest
+      steps:
+      - name: Merge
+        uses: 'pascalgn/automerge-action@v0.14.3'
+        env:
+          GITHUB_TOKEN: '${{ secrets.RELEASE_TOKEN }}'
       - name: Checkout
         uses: actions/checkout@v2
         with: 
