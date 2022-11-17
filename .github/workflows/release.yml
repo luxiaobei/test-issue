@@ -8,15 +8,13 @@ on:
     types:
       - submitted
   status: {}
-  
+
 jobs:
   mergeAndRelease:
     name: mergeAndRelease
     if:  startsWith(github.head_ref, 'release-')
     runs-on: ubuntu-18.04
-    steps: 
-      runs-on: ubuntu-latest
-      steps:
+    steps:
       - name: Merge
         uses: 'pascalgn/automerge-action@v0.14.3'
         env:
