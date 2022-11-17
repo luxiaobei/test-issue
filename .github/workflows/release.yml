@@ -10,9 +10,9 @@ on:
 jobs:
   mergeAndRelease:
     name: mergeAndRelease
+    if:  startsWith(github.head_ref, 'release-')
     runs-on: ubuntu-18.04
     steps: 
-      if:  startsWith(github.head_ref, 'release-')
       runs-on: ubuntu-latest
       steps:
       - name: Merge
