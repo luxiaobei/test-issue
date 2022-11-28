@@ -14,9 +14,6 @@
     "type": "git",
     "url": "git+ssh://git@github.com/luxiaobei/test-issue.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/luxiaobei"
-  },
   "description": "Angular UI Components",
   "keywords": [
     "Angular",
