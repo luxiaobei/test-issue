@@ -10,11 +10,11 @@ on:
   status: {}
 
 jobs:
-  console_log:
-    runs-on: ubuntu-latest
-    steps:
-       - run: echo '${{toJSON(github)}}'
-  run_if:
+  # console_log:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #      - run: echo '${{toJSON(github)}}'
+  # run_if:
     if:  startsWith(github.head_ref, 'release-auto-')
   # 合并发布版本的 pr 到 master
     runs-on: ubuntu-latest
@@ -35,9 +35,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
-      - run: echo '${{toJSON(secrets)}}'
       - name: Publish
         run: npm run pub
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
