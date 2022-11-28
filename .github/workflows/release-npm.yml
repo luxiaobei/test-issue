@@ -1,4 +1,4 @@
-name: AutoMerge
+# name: AutoMergeAndRelease
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ jobs:
     steps:
        - run: echo '${{toJSON(github)}}'
   run_if:
-    if:  startsWith(github.head_ref, 'release-auto')
+    if:  startsWith(github.head_ref, 'release-auto-')
   # 合并发布版本的 pr 到 master
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +35,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
+      - run: echo '${{toJSON(secrets)}}'
       - name: Publish
         run: npm run pub
         env:

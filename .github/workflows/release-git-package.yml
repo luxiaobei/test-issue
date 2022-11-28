@@ -1,4 +1,7 @@
-# name: AutoMergeAndRelease
+# "publishConfig": {
+#     "registry": "https://npm.pkg.github.com/luxiaobei"
+#   },
+# name: AutoMerge
 
 # on:
 #   pull_request:
@@ -8,22 +11,23 @@
 #     types:
 #       - submitted
 #   status: {}
+
 # jobs:
 #   console_log:
 #     runs-on: ubuntu-latest
 #     steps:
 #        - run: echo '${{toJSON(github)}}'
-#   autoMergeAndRelease:
+#   run_if:
 #     if:  startsWith(github.head_ref, 'release-')
 #   # 合并发布版本的 pr 到 master
 #     runs-on: ubuntu-latest
 #     steps:
-#       - name: AutoMerge
+#       - name: Automerge
 #         uses: 'pascalgn/automerge-action@v0.14.3'
 #         env:
 #           GITHUB_TOKEN: '${{ secrets.RELEASE_TOKEN }}'
 #           MERGE_LABELS: ''
-#       - name: Checkout
+#       - name: Release
 #         uses: actions/checkout@v2
 #         with: 
 #           fetch-depth: 0
