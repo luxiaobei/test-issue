@@ -11,7 +11,7 @@ on:
 
 jobs:
   merge_release:
-    if:  startsWith(github.head_ref, 'release-auto-v')
+    if:  startsWith(github.head_ref, 'release-auto-')
     runs-on: ubuntu-latest
     steps:
       - name: Automerge
@@ -36,7 +36,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   merge_release_next:
-    if:  startsWith(github.head_ref, 'release-next-auto-v')
+    if:  startsWith(github.head_ref, 'release-next-auto-')
     runs-on: ubuntu-latest
     steps:
       - name: Automerge
