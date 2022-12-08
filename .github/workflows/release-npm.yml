@@ -15,7 +15,7 @@ on:
 
 jobs:
   autoApprove:
-    if: ${{ github.event.label.name == 'autoMerge' }}
+    # if: ${{ github.event.label.name == 'autoMerge' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
