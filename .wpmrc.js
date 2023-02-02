@@ -1,5 +1,5 @@
 module.exports = {
-    allowBranch: ['main'],
+    allowBranch: ['main', 'release-auto-*'],
     bumpFiles: [
         'package.json',
         'package-lock.json'
