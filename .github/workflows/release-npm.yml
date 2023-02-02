@@ -3,60 +3,80 @@ name: AutoMerge
 on:
   pull_request:
     types:
-     - opened
+      - opened
+      - reopened
   pull_request_review:
     types:
       - submitted
+  check_suite:
+    types:
+      - completed
   status: {}
 
 jobs:
-  merge_release:
-    if:  startsWith(github.head_ref, 'release-auto-v')
+  autoApprove:
+    if: startsWith(github.head_ref, 'release-auto-')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: hmarr/auto-approve-action@v3
+        with:
+          review-message: 'Auto approve sync PRs to auto merge them'
+  publish:
+    if: startsWith(github.head_ref, 'release-auto-')
+    needs: [autoApprove]
     runs-on: ubuntu-latest
     steps:
-      - name: Automerge
-        uses: 'pascalgn/automerge-action@v0.14.3'
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          MERGE_LABELS: ''
-      - name: Release
+      - name: Checkout
         uses: actions/checkout@v2
-        with: 
-          fetch-depth: 0
-      - name:  Setup Node.js
+        # with:
+        #   ref: ${{ github.event.pull_request.base.ref }}
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
-        run: npm ci
-      - run: echo '${{toJSON(secrets)}}'
+        run: npm ci --force
       - name: Publish
-        run: npm run pub
+        if: startsWith(github.head_ref, 'release-auto-v')
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          npm run pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  merge_release_next:
-    if:  startsWith(github.head_ref, 'release-next-auto-v')
+      - name: Publish-next
+        if: startsWith(github.head_ref, 'release-auto-next-v')
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          npm run pub-next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Read package.json
+        id: read-version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: "package.json"
+          prop_path: "version"
+      - name: send message to webhook
+        uses: joelwmale/webhook-action@master
+        with:
+          url: 'http://hook.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657'
+          body: '{ "version": "${{ steps.read-version.outputs.prop }}" }'
+  autoMerge:
+    if: startsWith(github.head_ref, 'release-auto-')
+    needs: [publish]
     runs-on: ubuntu-latest
     steps:
-      - name: Automerge
-        uses: 'pascalgn/automerge-action@v0.14.3'
+      - id: autoMerge
+        name: autoMerge
+        uses: 'pascalgn/automerge-action@v0.15.5'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           MERGE_LABELS: ''
-      - name: Release
-        uses: actions/checkout@v2
-        with: 
-          fetch-depth: 0
-      - name:  Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org'
-      - name: Install dependencies
-        run: npm ci
-      - run: echo '${{toJSON(secrets)}}'
-      - name: Publish
-        run: npm run pub-next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          MERGE_FORKS: "false"
+          MERGE_RETRIES: "20"
+          MERGE_RETRY_SLEEP: "60000"

@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sleep for 2m
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '2m'
+      
