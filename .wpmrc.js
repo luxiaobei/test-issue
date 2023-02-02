@@ -1,5 +1,5 @@
 module.exports = {
-    allowBranch: ['main'],
+    allowBranch: ['main', 'release-auto-*'],
     bumpFiles: [
         'package.json',
         'package-lock.json'
@@ -13,6 +13,6 @@ module.exports = {
     // otherwise, the changelog will rebuild, and will be lost past versions
     tagPrefix: '',
     hooks: {
-        prepublish: 'npm run build'
+        
     }
 };
