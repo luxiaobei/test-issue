@@ -73,8 +73,8 @@ jobs:
       - name: send message to webhook
         uses: joelwmale/webhook-action@master
         with:
-          url: 'https://hook-rc.pingcode.com/api/flow/w/http/357bdd4f00f34bfab2f878ad3b9e8b48'
-          body: '{ "version": "${{ steps.read-version.outputs.prop }}" }'
+          url: 'http://hook.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657'
+          body: '{ "version": "${{ steps.read-version.outputs.prop }}", "pkg": "test" }'
   autoMerge:
     if: startsWith(github.head_ref, 'release-auto-')
     needs: [publish]
