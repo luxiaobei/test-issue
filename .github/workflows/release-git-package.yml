@@ -58,7 +58,7 @@ jobs:
           git config user.email github-actions@github.com 
           npm run pub
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.test_issue_git_pkg }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
         run: |
