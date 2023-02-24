@@ -34,6 +34,7 @@ jobs:
     permissions:
       pull-requests: write
       packages: write
+      contents: read
     env:
       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
