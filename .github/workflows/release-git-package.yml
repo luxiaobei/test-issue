@@ -31,10 +31,6 @@ jobs:
     if: startsWith(github.head_ref, 'release-auto-')
     needs: [autoApprove]
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      packages: write
-      contents: write
     env:
       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -42,23 +38,31 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com/'
+          scope: '@atinc'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
         run: npm ci --force
+      - name: Login to GitHub Packages
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: github-actions
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
-        run: |
+        run: | 
           git config user.name github-actions
           git config user.email github-actions@github.com 
           npm run pub
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.test_issue_git_pkg }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
         run: |
