@@ -17,7 +17,8 @@ jobs:
   console_log:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{toJSON(github)}}'
+      # - run: echo '${{toJSON(github)}}'
+      - run: echo '${{toJSON(env)}}'
   autoApprove:
     if: startsWith(github.head_ref, 'release-auto-')
     runs-on: ubuntu-latest
