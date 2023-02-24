@@ -34,7 +34,7 @@ jobs:
     permissions:
       pull-requests: write
       packages: write
-      contents: read
+      content: read
     env:
       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -61,7 +61,8 @@ jobs:
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
         run: |
-          git config user.name ${{github.actor}}
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           npm run pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
