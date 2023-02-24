@@ -60,18 +60,20 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
-        run: |
-          git config user.name github.actor
+        run: | 
+          git config user.name github-actions
+          git config user.email github-actions@github.com 
           npm run pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
         run: |
-          git config user.name github.actor
+          git config user.name github-actions
+          git config user.email github-actions@github.com 
           npm run pub-next
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.test_issue_git_pkg }}
       - name: Read package.json
         id: read-version
         uses: notiz-dev/github-action-json-property@release
