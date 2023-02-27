@@ -16,7 +16,7 @@
     "url": "https://github.com/luxiaobei/test-issue"
   },
   "publishConfig": {
-    "@luxiaobei:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/luxiaobei"
    },
   "description": "Angular UI Components",
   "keywords": [
