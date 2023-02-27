@@ -17,8 +17,8 @@ jobs:
   console_log:
     runs-on: ubuntu-latest
     steps:
-      # - run: echo '${{toJSON(github)}}'
-      - run: echo '${{toJSON(env)}}'
+      - run: echo '${{toJSON(github)}}'
+      # - run: echo '${{toJSON(env)}}'
   autoApprove:
     if: startsWith(github.head_ref, 'release-auto-')
     runs-on: ubuntu-latest
@@ -32,8 +32,6 @@ jobs:
     if: startsWith(github.head_ref, 'release-auto-')
     needs: [autoApprove]
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -53,7 +51,7 @@ jobs:
       - name: Install dependencies
         run: npm ci --force
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
         run: | 
