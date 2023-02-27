@@ -49,7 +49,7 @@ jobs:
       - name: Authenticate
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-          echo "@atinc:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+          echo "@luxiaobei:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - name: Install dependencies
         run: npm ci --force
         env:
