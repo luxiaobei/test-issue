@@ -32,14 +32,11 @@ jobs:
     if: startsWith(github.head_ref, 'release-auto-')
     needs: [autoApprove]
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Authenticate
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.TEST_READ }}" > ~/.npmrc
@@ -50,8 +47,6 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci --force
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
         run: | 
