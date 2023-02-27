@@ -50,6 +50,8 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci --force
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Unset authenticate token
         run: rm ~/.npmrc
       - name: Publish
