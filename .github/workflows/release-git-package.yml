@@ -74,7 +74,7 @@ jobs:
       - name: send message to webhook
         uses: joelwmale/webhook-action@master
         with:
-          url: 'http://hook.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657'
+          url: 'https://hook.alpha.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657'
           body: '{ "version": "${{ steps.read-version.outputs.prop }}", "pkg": "test" }'
   autoMerge:
     if: startsWith(github.head_ref, 'release-auto-')
