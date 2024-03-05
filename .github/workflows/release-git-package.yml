@@ -42,7 +42,7 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.TEST_READ }}" > ~/.npmrc
           echo "@luxiaobei:registry=https://npm.pkg.github.com/" >> ~/.npmrc
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
           node-version: 18
       - name: Install dependencies
