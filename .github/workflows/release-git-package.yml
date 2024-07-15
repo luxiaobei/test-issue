@@ -17,9 +17,9 @@ jobs:
   console_log:
     runs-on: ubuntu-latest
     steps:
-      # - run: echo '${{toJSON(github)}}'
+      - run: echo '${{toJSON(github)}}'
       # - run: echo '${{toJSON(secrets)}}'
-      - run: echo '${{github.event.pull_request.head.ref}}'
+      # - run: echo '${{github.event.pull_request.head.ref}}'
   autoApprove:
     if: startsWith(github.head_ref, 'release-auto-')
     runs-on: ubuntu-latest
