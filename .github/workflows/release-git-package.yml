@@ -50,18 +50,18 @@ jobs:
         run: yarn install
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
-        run: | 
+      - run: | 
           git config user.name github-actions
           git config user.email github-actions@github.com 
-        run: yarn pub
+      - run: yarn pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
-        run: |
+      - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com 
-        run:
+      - run:
           npm run pub-next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
