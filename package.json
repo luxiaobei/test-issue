@@ -3,8 +3,8 @@
   "version": "1.1.46",
   "license": "MIT",
   "scripts": {
-    "pub": "wpm publish && npm publish",
-    "pub-next": "wpm publish && npm publish --tag next --access=public"
+    "pub": "wpm publish && yarn publish",
+    "pub-next": "wpm publish && yarn publish --tag next --access=public"
   },
   "release": {
     "branches": [
