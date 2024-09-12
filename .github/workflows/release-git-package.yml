@@ -17,8 +17,8 @@ jobs:
   console_log:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{toJSON(github)}}'
-      # - run: echo '${{toJSON(secrets)}}'
+      # - run: echo '${{toJSON(github)}}'
+      - run: echo '${{toJSON(secrets)}}'
       # - run: echo '${{github.event.pull_request.head.ref}}'
   autoApprove:
     if: startsWith(github.head_ref, 'release-auto-')
@@ -46,10 +46,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 20
-      # - name: Install dependencies
-      #   uses: borales/actions-yarn@v5
-      #   with:
-      #     cmd: install # will run `yarn install` command
       - name: Install dependencies
         run: yarn install
       - name: Publish
