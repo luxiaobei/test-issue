@@ -53,7 +53,7 @@ jobs:
         run: | 
           git config user.name github-actions
           git config user.email github-actions@github.com 
-          yarn pub
+        run: yarn pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
@@ -61,6 +61,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com 
+        run:
           npm run pub-next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
