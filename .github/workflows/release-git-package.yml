@@ -46,15 +46,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 20
-      - name: Install dependencies
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: install # will run `yarn install` command
       # - name: Install dependencies
-      #   run: npm ci --force
+      #   uses: borales/actions-yarn@v5
+      #   with:
+      #     cmd: install # will run `yarn install` command
+      - name: Install dependencies
+        run: yarn install
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
-        uses: borales/actions-yarn@v5
         run: | 
           git config user.name github-actions
           git config user.email github-actions@github.com 
