@@ -3,7 +3,7 @@
   "version": "1.1.47",
   "license": "MIT",
   "scripts": {
-    "pub": "wpm publish && yarn publish",
+    "pub": "wpm publish && yarn publish --access=public",
     "pub-next": "wpm publish && yarn publish --tag next --access=public"
   },
   "release": {
