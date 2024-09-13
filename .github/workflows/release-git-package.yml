@@ -17,8 +17,8 @@ jobs:
   console_log:
     runs-on: ubuntu-latest
     steps:
-      # - run: echo '${{toJSON(github)}}'
-      - run: echo '${{toJSON(secrets)}}'
+      - run: echo '${{toJSON(github)}}'
+      # - run: echo '${{toJSON(secrets)}}'
       # - run: echo '${{github.event.pull_request.head.ref}}'
   autoApprove:
     if: startsWith(github.head_ref, 'release-auto-')
@@ -52,16 +52,16 @@ jobs:
         if: startsWith(github.head_ref, 'release-auto-v')
         run: |
           git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.email github-actions@github.com 
           npm run pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
-      - run: |
+        run: |
           git config user.name github-actions
-          git config user.email github-actions@github.com
-      - run: npm run pub-next
+          git config user.email github-actions@github.com 
+          npm run pub-next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Unset authenticate token

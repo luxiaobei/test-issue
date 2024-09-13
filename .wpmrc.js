@@ -2,7 +2,8 @@ module.exports = {
     allowBranch: ['main', 'release-auto-*'],
     bumpFiles: [
         'package.json',
-        'package-lock.json'
+        'package-lock.json',
+        'yarn.lock'
     ],
     skip: {
         confirm: true,
