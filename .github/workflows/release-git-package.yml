@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v4
         with:
-          review-message: 'Auto approve sync PRs to auto merge them'
+          review-message: "Auto approve sync PRs to auto merge them"
   publish:
     if: startsWith(github.head_ref, 'release-auto-')
     needs: [autoApprove]
@@ -47,23 +47,21 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
-        run: yarn install
+        run: npm ci --force
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
-        run: | 
+        run: |
           git config user.name github-actions
-          git config user.email github-actions@github.com 
-      - name: pub
-        run: yarn pub
+          git config user.email github-actions@github.com
+          npm run pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
       - run: |
           git config user.name github-actions
-          git config user.email github-actions@github.com 
-      - run:
-          npm run pub-next
+          git config user.email github-actions@github.com
+      - run: npm run pub-next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Unset authenticate token
@@ -77,7 +75,7 @@ jobs:
       - name: send message to webhook
         uses: joelwmale/webhook-action@master
         with:
-          url: 'https://hook.alpha.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657'
+          url: "https://hook.alpha.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657"
           body: '{ "version": "${{ steps.read-version.outputs.prop }}", "pkg": "test" }'
   autoMerge:
     if: startsWith(github.head_ref, 'release-auto-')
@@ -86,10 +84,10 @@ jobs:
     steps:
       - id: autoMerge
         name: autoMerge
-        uses: 'pascalgn/automerge-action@v0.15.5'
+        uses: "pascalgn/automerge-action@v0.15.5"
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-          MERGE_LABELS: ''
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: ""
           MERGE_FORKS: "false"
           MERGE_RETRIES: "20"
           MERGE_RETRY_SLEEP: "60000"
