@@ -80,11 +80,6 @@
   resolved "https://registry.npmmirror.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
-"@luxiaobei/ngx-tethys2@0.0.0":
-  version "0.0.0"
-  resolved "https://npm.pkg.github.com/download/@luxiaobei/ngx-tethys2/0.0.0/70c578370af0b569d07702dd4cd7fa5aade2f0f8#70c578370af0b569d07702dd4cd7fa5aade2f0f8"
-  integrity sha512-2Gr8CiYKwa4LNET8hVGz/7PvjASG+zJeuPu800tPpKRdS4QjMWQMjnsyA3sFoQBqJrO1G/hywzjQ4FPN0lYiCA==
-
 "@types/glob@~7.2.0":
   version "7.2.0"
   resolved "https://registry.npmmirror.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"

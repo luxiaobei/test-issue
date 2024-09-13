@@ -24,7 +24,6 @@
     "Angular 2+"
   ],
   "dependencies": {
-    "@luxiaobei/ngx-tethys2": "0.0.0"
   },
   "devDependencies": {
     "@worktile/pkg-manager": "^0.1.0"
