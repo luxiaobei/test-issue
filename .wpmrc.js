@@ -6,7 +6,7 @@ module.exports = {
         'yarn.lock'
     ],
     skip: {
-        confirm: true
+        confirm: true,
     },
     // backward compatibility changelog
     // because we didn't use tag prefix(v) when create tag before
