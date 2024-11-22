@@ -1,112 +1,112 @@
-name: AutoMerge
+# name: AutoMerge
 
-on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
+# on:
+#   pull_request:
+#     types:
+#       - opened
+#       - reopened
+#   pull_request_review:
+#     types:
+#       - submitted
+#   check_suite:
+#     types:
+#       - completed
+#   status: {}
 
-jobs:
-  console_log:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo '${{toJSON(github)}}'
-      # - run: echo '${{toJSON(secrets)}}'
-      # - run: echo '${{github.event.pull_request.head.ref}}'
-  autoApprove:
-    if: startsWith(github.head_ref, 'release-auto-')
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - uses: hmarr/auto-approve-action@v4
-        with:
-          review-message: "Auto approve sync PRs to auto merge them"
-  publish:
-    if: startsWith(github.head_ref, 'release-auto-')
-    needs: [autoApprove]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-      - name: Authenticate
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.TEST_READ }}" > ~/.npmrc
-          echo "@luxiaobei:registry=https://npm.pkg.github.com/" >> ~/.npmrc
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20
-      # - name: Install dependencies
-      #   run: npm ci --force
-      # - name: Install dependencies
-      #   run: yarn install
-      # - name: Publish
-      #   if: startsWith(github.head_ref, 'release-auto-v')
-      #   run: |
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-      #     yarn pub
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Login git
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-      - name: Install dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install # will run `yarn install` command
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if needed
+# jobs:
+#   console_log:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo '${{toJSON(github)}}'
+#       # - run: echo '${{toJSON(secrets)}}'
+#       # - run: echo '${{github.event.pull_request.head.ref}}'
+#   autoApprove:
+#     if: startsWith(github.head_ref, 'release-auto-')
+#     runs-on: ubuntu-latest
+#     permissions:
+#       pull-requests: write
+#     steps:
+#       - uses: hmarr/auto-approve-action@v4
+#         with:
+#           review-message: "Auto approve sync PRs to auto merge them"
+#   publish:
+#     if: startsWith(github.head_ref, 'release-auto-')
+#     needs: [autoApprove]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#         with:
+#           ref: ${{ github.head_ref }}
+#       - name: Authenticate
+#         run: |
+#           echo "//npm.pkg.github.com/:_authToken=${{ secrets.TEST_READ }}" > ~/.npmrc
+#           echo "@luxiaobei:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 20
+#       # - name: Install dependencies
+#       #   run: npm ci --force
+#       # - name: Install dependencies
+#       #   run: yarn install
+#       # - name: Publish
+#       #   if: startsWith(github.head_ref, 'release-auto-v')
+#       #   run: |
+#       #     git config user.name github-actions
+#       #     git config user.email github-actions@github.com
+#       #     yarn pub
+#       #   env:
+#       #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Login git
+#         run: |
+#           git config user.name github-actions
+#           git config user.email github-actions@github.com
+#       - name: Install dependencies
+#         uses: borales/actions-yarn@v4
+#         with:
+#           cmd: install # will run `yarn install` command
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if needed
 
-      - name: Publish
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: pub # will run `yarn build:prod` command
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if needed
-      - name: Publish-next
-        if: startsWith(github.head_ref, 'release-auto-next-v')
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com 
-          npm run pub-next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Unset authenticate token
-        run: rm ~/.npmrc
-      - name: Read package.json
-        id: read-version
-        uses: notiz-dev/github-action-json-property@release
-        with:
-          path: "package.json"
-          prop_path: "version"
-      - name: send message to webhook
-        uses: joelwmale/webhook-action@master
-        with:
-          url: "https://hook.alpha.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657"
-          body: '{ "version": "${{ steps.read-version.outputs.prop }}", "pkg": "test" }'
-  autoMerge:
-    if: startsWith(github.head_ref, 'release-auto-')
-    needs: [publish]
-    runs-on: ubuntu-latest
-    steps:
-      - id: autoMerge
-        name: autoMerge
-        uses: "pascalgn/automerge-action@v0.15.5"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: ""
-          MERGE_FORKS: "false"
-          MERGE_RETRIES: "20"
-          MERGE_RETRY_SLEEP: "60000"
+#       - name: Publish
+#         uses: borales/actions-yarn@v4
+#         with:
+#           cmd: pub # will run `yarn build:prod` command
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if needed
+#       - name: Publish-next
+#         if: startsWith(github.head_ref, 'release-auto-next-v')
+#         run: |
+#           git config user.name github-actions
+#           git config user.email github-actions@github.com 
+#           npm run pub-next
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Unset authenticate token
+#         run: rm ~/.npmrc
+#       - name: Read package.json
+#         id: read-version
+#         uses: notiz-dev/github-action-json-property@release
+#         with:
+#           path: "package.json"
+#           prop_path: "version"
+#       - name: send message to webhook
+#         uses: joelwmale/webhook-action@master
+#         with:
+#           url: "https://hook.alpha.pingcode.live/api/flow/w/http/2ff3c8114301482ab7c9cf34c19b1657"
+#           body: '{ "version": "${{ steps.read-version.outputs.prop }}", "pkg": "test" }'
+#   autoMerge:
+#     if: startsWith(github.head_ref, 'release-auto-')
+#     needs: [publish]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - id: autoMerge
+#         name: autoMerge
+#         uses: "pascalgn/automerge-action@v0.15.5"
+#         env:
+#           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+#           MERGE_LABELS: ""
+#           MERGE_FORKS: "false"
+#           MERGE_RETRIES: "20"
+#           MERGE_RETRY_SLEEP: "60000"
