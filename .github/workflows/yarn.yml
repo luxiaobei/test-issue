@@ -48,9 +48,9 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          yarn pub
+          wpm publish && yarn publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
         run: |
