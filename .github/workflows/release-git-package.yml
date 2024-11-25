@@ -110,3 +110,8 @@
 #           MERGE_FORKS: "false"
 #           MERGE_RETRIES: "20"
 #           MERGE_RETRY_SLEEP: "60000"
+
+#  "name": "@luxiaobei/test-issue1",
+# // "publishConfig": {
+#   //   "registry": "https://npm.pkg.github.com/luxiaobei"
+#   //  },
