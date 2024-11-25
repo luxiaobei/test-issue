@@ -5,7 +5,7 @@
   "scripts": {
     "pub": "wpm publish && yarn publish --access=public",
     "pub-only": "yarn npm publish --access=public",
-    "pub-next": "wpm publish && yarn publish --tag next --access=public"
+    "pub-next": "wpm publish && npm publish --tag next --access=public"
   },
   "release": {
     "branches": [
