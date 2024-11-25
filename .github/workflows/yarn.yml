@@ -43,6 +43,10 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Set NPM token
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
         run: |
@@ -50,7 +54,7 @@ jobs:
           git config user.email github-actions@github.com
           yarn pub
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish-next
         if: startsWith(github.head_ref, 'release-auto-next-v')
         run: |
