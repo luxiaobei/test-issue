@@ -43,10 +43,6 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: yarn install
-      - name: Set NPM token
-        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish
         if: startsWith(github.head_ref, 'release-auto-v')
         run: |
