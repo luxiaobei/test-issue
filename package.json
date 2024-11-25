@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "pub": "wpm publish && yarn publish --access=public",
+    "pub-only": "yarn publish --access=public",
     "pub-next": "wpm publish && yarn publish --tag next --access=public"
   },
   "release": {
