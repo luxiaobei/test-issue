@@ -42,7 +42,7 @@ jobs:
           node-version: 20
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Set NPM token
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
         env:
