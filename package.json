@@ -1,10 +1,9 @@
 {
   "name": "@luxiaobei1/test-issue",
-  "version": "1.1.61",
+  "version": "1.1.62",
   "license": "MIT",
   "scripts": {
-    "pub": "wpm publish && yarn publish --access=public",
-    "pub-only": "yarn npm publish --access=public",
+    "pub": "wpm publish && npm publish",
     "pub-next": "wpm publish && npm publish --tag next --access=public"
   },
   "release": {
@@ -16,14 +15,12 @@
     "type": "git",
     "url": "https://github.com/luxiaobei/test-issue"
   },
-  
   "description": "Angular UI Components",
   "keywords": [
     "Angular",
     "Angular 2+"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@worktile/pkg-manager": "^0.1.0"
   }
