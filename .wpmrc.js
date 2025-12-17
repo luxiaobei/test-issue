@@ -15,5 +15,6 @@ module.exports = {
     tagPrefix: '',
     hooks: {
         
-    }
+    },
+    dryRun: true
 };
