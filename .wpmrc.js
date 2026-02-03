@@ -14,7 +14,7 @@ module.exports = {
     // should set tagPrefix as empty (default is 'v')
     // otherwise, the changelog will rebuild, and will be lost past versions
     tagPrefix: '',
-    commitAll: true,
+    dryRun: true,
     hooks: {
         
     },
