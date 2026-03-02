@@ -77,9 +77,10 @@ jobs:
     steps:
       - id: autoMerge
         name: autoMerge
-        uses: "pascalgn/automerge-action@v0.15.5"
+        uses: "pascalgn/automerge-action@v0.16.4"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_METHOD: "squash"
           MERGE_LABELS: ""
           MERGE_FORKS: "false"
           MERGE_RETRIES: "20"
